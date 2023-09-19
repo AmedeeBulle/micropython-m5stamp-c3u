@@ -94,7 +94,8 @@ class QMP6988:
         if chipid[0] != _QMP6988_CHIP_ID_VALUE:
             raise ValueError("device not found")
 
-        self.reset()
+        # Hack to avoid MCU reset with M5Stack CoreS3
+        # self.reset()
 
         # read OTP values (datasheet section 4.3)
         calibration = self.i2c.readfrom_mem(
